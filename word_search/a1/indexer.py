@@ -30,14 +30,21 @@ def get_pdf_content(filepath):
     return data
 
 
+def get_doc_content(filepath):
+    # TODO: extract the text from docx file
+    return ""
+
+
 def get_file_content(filepath):
     data_return = []
     try:
         data = ""
-        if os.path.splitext(t)[1].lower() in ('.txt'):
+        if os.path.splitext(filepath)[1].lower() in ('.txt', ):
             data = get_txt_content(filepath)
-        elif os.path.splitext(t)[1].lower() in ('.pdf'):
+        elif os.path.splitext(filepath)[1].lower() in ('.pdf', ):
             data = get_pdf_content(filepath)
+        elif os.path.splitext(filepath)[1].lower() in ('.docx', 'doc', ):
+            get_doc_content(filepath)
         data_return = data.split()
     except:
         traceback.print_exc()
@@ -56,9 +63,12 @@ def generate_indexes(folder_path="", sub_folders=True):
     if sub_folders:
         file_types.append(glob.iglob(os.path.join(folder_path, "**\\*.[Tt][xX][Tt]"), recursive=True))
         file_types.append(glob.iglob(os.path.join(folder_path, "**\\*.[Pp][Dd][Ff]"), recursive=True))
+        file_types.append(glob.iglob(os.path.join(folder_path, "**\\*.[Dd][Oo][Cc][Xx]"), recursive=True))
     else:
         file_types.append(glob.iglob(os.path.join(folder_path, "*.[Tt][xX][Tt]")))
         file_types.append(glob.iglob(os.path.join(folder_path, "*.[Pp][Dd][Ff]")))
+        file_types.append(glob.iglob(os.path.join(folder_path, "*.[Pp][Dd][Ff]")))
+        file_types.append(glob.iglob(os.path.join(folder_path, "*.[Dd][Oo][Cc][Xx]")))
 
     for files_generator in file_types:
         for filepath in files_generator:
