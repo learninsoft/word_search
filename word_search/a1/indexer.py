@@ -32,7 +32,8 @@ def get_pdf_content(filepath):
 
 def get_doc_content(filepath):
     # TODO: extract the text from docx file
-    return ""
+    import docx2txt
+    return docx2txt.process(filepath)
 
 
 def get_file_content(filepath):
