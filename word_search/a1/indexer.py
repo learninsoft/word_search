@@ -60,13 +60,12 @@ def generate_indexes(folder_path="", sub_folders=True):
         return None
 
     file_types = []
-    if sub_folders:
-        file_types.append(glob.iglob(os.path.join(folder_path, "**\\*.[Tt][xX][Tt]"), recursive=True))
-        file_types.append(glob.iglob(os.path.join(folder_path, "**\\*.[Pp][Dd][Ff]"), recursive=True))
-        file_types.append(glob.iglob(os.path.join(folder_path, "**\\*.[Dd][Oo][Cc][Xx]"), recursive=True))
+    if sub_folders: 
+        file_types.append(glob.iglob(os.path.join(folder_path, f"**{os.path.sep}*.[Tt][xX][Tt]"), recursive=True))
+        file_types.append(glob.iglob(os.path.join(folder_path, f"**{os.path.sep}*.[Pp][Dd][Ff]"), recursive=True))
+        file_types.append(glob.iglob(os.path.join(folder_path, f"**{os.path.sep}*.[Dd][Oo][Cc][Xx]"), recursive=True))
     else:
         file_types.append(glob.iglob(os.path.join(folder_path, "*.[Tt][xX][Tt]")))
-        file_types.append(glob.iglob(os.path.join(folder_path, "*.[Pp][Dd][Ff]")))
         file_types.append(glob.iglob(os.path.join(folder_path, "*.[Pp][Dd][Ff]")))
         file_types.append(glob.iglob(os.path.join(folder_path, "*.[Dd][Oo][Cc][Xx]")))
 
