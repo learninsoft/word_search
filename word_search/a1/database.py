@@ -17,7 +17,7 @@ def configure_database():
         create_table_query = ("Create table if not exists files_word("
                               "filepath varchar(255), "
                               "word varchar(255), "
-                              "word_count int default 0, "
+                              "word_count int default 1, "
                               "PRIMARY KEY(filepath, word))")
         mycursor.execute(create_table_query)
         mydb.commit()
